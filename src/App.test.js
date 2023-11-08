@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import RomanNumerals from './components/RomanNumerals';
-
-
+import { render, fireEvent } from '@testing-library/react';
+import RomanNumerals from './Components/RomanNumerals';
 
 describe('RomanNumerals Component', () => {
   it('converts user input to Roman numeral and displays the result', () => {
@@ -10,8 +8,8 @@ describe('RomanNumerals Component', () => {
     const { getByLabelText, getByRole, getByText } = render(<RomanNumerals />);
 
     // Find the input field and button for interactions
-    const input = screen.getByLabelText(/arabic number/i);
-    const convertButton = screen.getByRole('button', { name: /convert/i });
+    const input = getByLabelText(/Convertir un chiffre arabe en chiffre romain/i);
+    const convertButton = getByRole('button', { name: /convert/i });
 
     // Simulate user typing "10" into the input field
     fireEvent.change(input, { target: { value: '10' } });
@@ -20,6 +18,6 @@ describe('RomanNumerals Component', () => {
     fireEvent.click(convertButton);
 
     // Assert that the expected output is rendered in the DOM
-    expect(screen.getByText('X')).toBeInTheDocument();
+    expect(getByText('10: X', { selector: '.roman-result' })).toBeInTheDocument();
   });;
 });
