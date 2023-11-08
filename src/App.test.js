@@ -20,15 +20,26 @@ describe('RomanNumerals Component', () => {
     expect(input.value).toBe('10');
   });
 
-  it('form submission updates the state with the correct Roman numeral', () => {
+  it('form submission updates the state 1 = 1', () => {
     render(<RomanNumerals />);
     const input = screen.getByLabelText(/Convertir un chiffre arabe en chiffre romain/i);
     const button = screen.getByRole('button', { name: /convert/i });
 
-    fireEvent.change(input, { target: { value: '10' } });
+    fireEvent.change(input, { target: { value: '1' } });
     fireEvent.click(button);
 
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('10: X');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('1: I');
+  });
+
+  it('form submission updates the state 5 = V', () => {
+    render(<RomanNumerals />);
+    const input = screen.getByLabelText(/Convertir un chiffre arabe en chiffre romain/i);
+    const button = screen.getByRole('button', { name: /convert/i });
+
+    fireEvent.change(input, { target: { value: '5' } });
+    fireEvent.click(button);
+
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('5: V');
   });
 
   it('converts user input to Roman numeral and displays the result', () => {
