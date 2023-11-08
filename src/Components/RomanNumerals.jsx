@@ -67,7 +67,7 @@ class RomanNumerals extends Component {
             Convertir
         </Button>
     </Form>
-    <h1 className="roman-result">{this.state.roman === '' ? '' : `${this.state.number}: ${this.state.roman} `}</h1>
+    <h1 className="roman-result">{this.state.roman === '' ? '' : `${this.state.number}: ${this.state.roman}`}</h1>
 </div>
         );
     }
