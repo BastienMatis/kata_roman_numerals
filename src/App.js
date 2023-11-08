@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import RomanNumerals from './Components/RomanNumerals';
 import './App.css';
+import HomePage from './Pages/HomePage';
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<RomanNumerals />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
     </div>

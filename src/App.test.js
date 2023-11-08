@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import RomanNumerals from './Components/RomanNumerals';
+import ArabNumerals from './Components/ArabNumerals';
 
 describe('RomanNumerals Component', () => {
   it('render RomanNumerals', () => {
@@ -59,4 +60,26 @@ describe('RomanNumerals Component', () => {
     // Assert that the expected output is rendered in the DOM
     expect(screen.getByText('10: X', { selector: '.roman-result' })).toBeInTheDocument();
   });;
+});
+
+describe('ArabNumerals Component', () => {
+
+  it('render ArabNumerals', () => {
+    render(<ArabNumerals />);
+  })
+
+  it('renders the component', () => {
+    render(<ArabNumerals />);
+    expect(screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /convert/i })).toBeInTheDocument();
+  });
+
+  it('input changes update the state value', () => {
+    render(<ArabNumerals />);
+    const input = screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i);
+    fireEvent.change(input, { target: { value: 'X' } });
+    expect(input.value).toBe('X');
+  });
+
+
 });
