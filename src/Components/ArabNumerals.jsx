@@ -27,10 +27,41 @@ class ArabNumerals extends Component {
         if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDM]/g) || romanNumber.match(/\s/g)) {
             this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
         } else {
-            // this.setState({ number: this.convertToArab(romanNumber) });
+            this.setState({ number: this.convertToArab(romanNumber), roman: romanNumber });
         }
 
     }
+
+    convertToArab = (romanNumber) => {
+        const romanNumerals = {
+            I: 1,
+            V: 5,
+            X: 10,
+            L: 50,
+            C: 100,
+            D: 500,
+            M: 1000,
+          };
+        
+          let result = 0;
+          let prevValue = 0;
+        
+          for (let i = romanNumber.length - 1; i >= 0; i--) {
+            const currentRoman = romanNumber[i];
+            const currentValue = romanNumerals[currentRoman];
+        
+            if (currentValue < prevValue) {
+              result -= currentValue;
+            } else {
+              result += currentValue;
+            }
+        
+            prevValue = currentValue;
+          }
+        
+          return result;
+        };
+
 
 
     render() {
@@ -46,7 +77,7 @@ class ArabNumerals extends Component {
             Convertir
         </Button>
     </Form>
-    <h1 className="roman-result">{this.state.number === '' ? '' : `${this.state.roman}: ${this.state.number}`}</h1>
+    <h1 className="arab-result">{this.state.number === '' ? '' : `${this.state.roman}: ${this.state.number}`}</h1>
 </div>
         );
     }
