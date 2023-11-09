@@ -23,6 +23,9 @@ class ArabNumerals extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const romanNumber = this.state.value;
+        if (romanNumber === '') {
+            this.setState({ errorMessage: 'Veuillez entrer un chiffre romain' });
+        } else {
         // if romanNumber contains a number, special character, space, or letter not in the romanNumerals array, return error message
         if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDMO]/g) || romanNumber.match(/\s/g)) {
             this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
@@ -45,6 +48,7 @@ class ArabNumerals extends Component {
             });
         }
 
+    }
     }
 
     convertToArab = (romanNumber) => {
