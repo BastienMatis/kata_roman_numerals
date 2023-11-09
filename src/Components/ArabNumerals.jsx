@@ -10,7 +10,7 @@ class ArabNumerals extends Component {
             roman: '',
             errorMessage: '',
             number: '',
-            romanNumerals: ["I", "V", "X", "L", "C", "D", "M"]
+            romanNumerals: ["I", "V", "X", "L", "C", "D", "M", "O"]
         }
     }
 
@@ -23,7 +23,7 @@ class ArabNumerals extends Component {
         event.preventDefault();
         const romanNumber = this.state.value;
         // if romanNumber contains a number, special character, space, or letter not in the romanNumerals array, return error message
-        if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDM]/g) || romanNumber.match(/\s/g)) {
+        if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDMO]/g) || romanNumber.match(/\s/g)) {
             this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
         } else {
             this.setState({ number: this.convertToArab(romanNumber), roman: romanNumber });
@@ -33,6 +33,7 @@ class ArabNumerals extends Component {
 
     convertToArab = (romanNumber) => {
         const romanNumerals = {
+            O: 0,
             I: 1,
             V: 5,
             X: 10,
