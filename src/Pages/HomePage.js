@@ -5,8 +5,8 @@ import ArabNumerals from '../Components/ArabNumerals';
 const HomePage = () => {
     return (
         <div>
-        <RomanNumerals />
         <ArabNumerals />
+        <RomanNumerals />
         </div>
     );
     }

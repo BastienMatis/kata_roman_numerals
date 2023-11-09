@@ -4,6 +4,10 @@ import RomanNumerals from './Components/RomanNumerals';
 import ArabNumerals from './Components/ArabNumerals';
 
 describe('RomanNumerals Component', () => {
+  it('render RomanNumerals', () => {
+    render(<RomanNumerals />);
+  })
+
   it('renders the component', () => {
     render(<RomanNumerals />);
     expect(screen.getByLabelText(/Convertir un chiffre arabe en chiffre romain/i)).toBeInTheDocument();
@@ -59,6 +63,11 @@ describe('RomanNumerals Component', () => {
 });
 
 describe('ArabNumerals Component', () => {
+
+  it('render ArabNumerals', () => {
+    render(<ArabNumerals />);
+  })
+
   it('renders the component', () => {
     render(<ArabNumerals />);
     expect(screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i)).toBeInTheDocument();
@@ -109,4 +118,6 @@ describe('ArabNumerals Component', () => {
     // Assert that the expected output is rendered in the DOM
     expect(screen.getByText('X: 10', { selector: '.arab-result' })).toBeInTheDocument();
   });;
+
+
 });

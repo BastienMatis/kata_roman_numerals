@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 class ArabNumerals extends Component {
 
@@ -26,7 +27,18 @@ class ArabNumerals extends Component {
         if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDMO]/g) || romanNumber.match(/\s/g)) {
             this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
         } else {
-            this.setState({ number: this.convertToArab(romanNumber), roman: romanNumber });
+            axios.get('http://localhost:8000/home', // send romanNumber to server
+            {
+                params: {
+                    romanNumber: romanNumber
+                }
+            })
+            .then(response => {
+                this.setState({ number: response.data.home, roman: romanNumber });
+            })
+            .catch(error => {
+                console.log(error);
+            });
         }
 
     }
