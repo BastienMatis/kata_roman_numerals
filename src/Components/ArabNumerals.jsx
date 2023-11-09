@@ -41,7 +41,11 @@ class ArabNumerals extends Component {
                 }
             })
             .then(response => {
+                if (response.data.home === NaN) {
+                    this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
+                } else {
                 this.setState({ number: response.data.home, roman: romanNumber });
+                }
             })
             .catch(error => {
                 console.log(error);
