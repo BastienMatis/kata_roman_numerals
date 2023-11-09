@@ -31,10 +31,6 @@ class ArabNumerals extends Component {
             {
                 params: {
                     romanNumber: romanNumber
-                },
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
                 }
             })
             .then(response => {
