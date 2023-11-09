@@ -37,6 +37,9 @@
   }
 }
 
+.arab-result {
+  font-family: Times New Roman;
+}
 
 .romanNumerals {
   max-width: 400px;
