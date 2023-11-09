@@ -27,7 +27,7 @@ class ArabNumerals extends Component {
         if (romanNumber.match(/[0-9]/g) || romanNumber.match(/[^IVXLCDMO]/g) || romanNumber.match(/\s/g)) {
             this.setState({ errorMessage: 'Veuillez entrer un chiffre romain valide' });
         } else {
-            axios.get('http://localhost:8000/home', // send romanNumber to server
+            axios.get('https://backend-kata-roman-numerals-9914083f65a4.herokuapp.com/home', // send romanNumber to server
             {
                 params: {
                     romanNumber: romanNumber
