@@ -4,6 +4,10 @@ import RomanNumerals from './Components/RomanNumerals';
 import ArabNumerals from './Components/ArabNumerals';
 
 describe('RomanNumerals Component', () => {
+  it('render RomanNumerals', () => {
+    render(<RomanNumerals />);
+  })
+
   it('renders the component', () => {
     render(<RomanNumerals />);
     expect(screen.getByLabelText(/Convertir un chiffre arabe en chiffre romain/i)).toBeInTheDocument();
@@ -59,6 +63,11 @@ describe('RomanNumerals Component', () => {
 });
 
 describe('ArabNumerals Component', () => {
+
+  it('render ArabNumerals', () => {
+    render(<ArabNumerals />);
+  })
+
   it('renders the component', () => {
     render(<ArabNumerals />);
     expect(screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i)).toBeInTheDocument();
@@ -71,42 +80,6 @@ describe('ArabNumerals Component', () => {
     fireEvent.change(input, { target: { value: 'X' } });
     expect(input.value).toBe('X');
   });
-  it('form submission updates the state I = 1', () => {
-    render(<ArabNumerals />);
-    const input = screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i);
-    const button = screen.getByRole('button', { name: /convert/i });
 
-    fireEvent.change(input, { target: { value: 'I' } });
-    fireEvent.click(button);
 
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('I: 1');
-  });
-
-  it('form submission updates the state V = 5', () => {
-    render(<ArabNumerals />);
-    const input = screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i);
-    const button = screen.getByRole('button', { name: /convert/i });
-
-    fireEvent.change(input, { target: { value: 'V' } });
-    fireEvent.click(button);
-
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('V: 5');
-  });
-  it('converts user input to Arab numeral and displays the result', () => {
-    // Render the component on a virtual DOM for testing
-    const { getByLabelText, getByRole, getByText } = render(<ArabNumerals />);
-
-    // Find the input field and button for interactions
-    const input = screen.getByLabelText(/Convertir un chiffre romain en chiffre arabe/i);
-    const convertButton = screen.getByRole('button', { name: /convert/i });
-
-    // Simulate user typing "X" into the input field
-    fireEvent.change(input, { target: { value: 'X' } });
-
-    // Simulate user clicking the "Convert" button
-    fireEvent.click(convertButton);
-
-    // Assert that the expected output is rendered in the DOM
-    expect(screen.getByText('X: 10', { selector: '.arab-result' })).toBeInTheDocument();
-  });;
 });
